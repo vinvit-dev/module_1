@@ -10,6 +10,9 @@ namespace Drupal\vinvit\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+use Drupal\Core\Ajax\MessageCommand;
+use Drupal\Core\Ajax\AjaxResponse;
+
 /**
  * Cats form class
  */
@@ -26,6 +29,7 @@ class CatsForm extends FormBase
   /**
    * {@inheritdoc}
    */
+
   public function buildForm(array $form, FormStateInterface $form_state): array
   {
     $form['cat_name'] = [
@@ -41,8 +45,31 @@ class CatsForm extends FormBase
     $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Add cat'),
+      '#ajax' => [
+        'callback' => '::ajaxSubmit'
+      ]
     ];
     return $form;
+  }
+
+  /**
+   * Ajax callback function for submit
+   *
+   * @param array $form
+   * @param FormStateInterface $form_state
+   * @return AjaxResponse
+   */
+
+  public function ajaxSubmit(array &$form, FormStateInterface $form_state): AjaxResponse
+  {
+    $response = new AjaxResponse();
+
+    if (strlen($form_state->getValue('cat_name')) < 2 || strlen($form_state->getValue('cat_name')) > 32) {
+      $response->addCommand(new MessageCommand($this->t('Invalid name length'), null, ["type" => "error"]));
+    } else {
+      $response->addCommand(new MessageCommand($this->t('All good')));
+    }
+    return $response;
   }
 
   /**
@@ -50,12 +77,6 @@ class CatsForm extends FormBase
    */
   public function validateForm(array &$form, FormStateInterface $form_state)
   {
-    if(strlen($form_state->getValue('cat_name')) < 2 || strlen($form_state->getValue('cat_name')) > 32) {
-      $form_state->setErrorByName('cat_name', "Invalid cat name length!");
-    } else
-    {
-      \Drupal::messenger()->addStatus("All good!");
-    }
   }
 
   /**
