@@ -1,0 +1,7 @@
+vinvit.main:
+  path: '/vinvit/cats'
+  defaults:
+    _controller: '\Drupal\vinvit\Controller\CatsPageController::content'
+    _title: 'Cats'
+  requirements:
+    _permission: 'access content'
