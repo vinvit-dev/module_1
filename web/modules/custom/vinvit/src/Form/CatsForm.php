@@ -50,6 +50,12 @@ class CatsForm extends FormBase
    */
   public function validateForm(array &$form, FormStateInterface $form_state)
   {
+    if(strlen($form_state->getValue('cat_name')) < 2 || strlen($form_state->getValue('cat_name')) > 32) {
+      $form_state->setErrorByName('cat_name', "Invalid cat name length!");
+    } else
+    {
+      \Drupal::messenger()->addStatus("All good!");
+    }
   }
 
   /**
