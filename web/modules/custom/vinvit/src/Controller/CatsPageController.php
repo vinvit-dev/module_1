@@ -19,7 +19,8 @@ class CatsPageController extends ControllerBase
     public function content(): array
     {
         return [
-        "#markup" => "Hello! You can add here a photo of your cat.",
+          '#theme' => 'cats',
+          '#markup' => 'Hello! You can add here a photo of your cat.',
         ];
     }
 }

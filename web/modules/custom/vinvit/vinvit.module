@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Main file for the vinvit module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function vinvit_theme(): array
+{
+  $themes['cats'] = [
+    "variables" => [
+      "markup" => NULL,
+    ]
+  ];
+  return $themes;
+}
