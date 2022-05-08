@@ -1,0 +1,15 @@
+footer {
+  width: 100%;
+  background-color: #202124;
+  padding: 40px 0;
+  text-align: center;
+}
+footer span {
+  color: #f8f9fa;
+}
+footer span a {
+  color: #f8f9fa;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=footer.css.map */

@@ -1,0 +1,20 @@
+.region-highlighted {
+  margin: 10px 0 0;
+}
+
+.region-content {
+  padding: 30px 0 40px;
+}
+.region-content h1.page-title {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.region-content ul.links a {
+  color: #0797ea;
+}
+.region-content .page-description {
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=content.css.map */

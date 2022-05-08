@@ -1,0 +1,14 @@
+name: Cats
+type: theme
+description: This is a sub theme base on Classy for First module
+core_version_requirement: ^9
+base theme: classy
+libraries:
+  - cats/framework
+
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  highlighted: Highlighted
+  content: Content
+  footer: Footer

@@ -1,0 +1,64 @@
+header {
+  background-color: #202124;
+}
+header .region-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+}
+header .region-header .site-name {
+  vertical-align: center;
+}
+header .region-header .site-name a {
+  color: #f8f9fa;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1;
+}
+header .region-header .block-menu .menu {
+  display: flex;
+  margin: 0;
+}
+header .region-header .block-menu .menu li {
+  padding: 0;
+}
+header .region-header .block-menu .menu li a {
+  color: #f8f9fa;
+  padding: 5px 10px;
+  transition: background 0.1s ease-in-out;
+  font-size: 14px;
+}
+header .region-header .block-menu .menu li a:hover {
+  background-color: #333;
+}
+
+.primary_menu {
+  background-color: #262626;
+}
+.primary_menu nav {
+  display: flex;
+  justify-content: center;
+}
+.primary_menu nav ul.menu {
+  display: flex;
+  margin: 0;
+}
+.primary_menu nav ul.menu li {
+  padding: 0;
+}
+.primary_menu nav ul.menu li a, .primary_menu nav ul.menu li a.is-active {
+  display: block;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #f8f9fa;
+  padding: 10px 10px 6px;
+  border-bottom: 4px solid #262626;
+  transition: background 0.1s ease-in-out;
+}
+.primary_menu nav ul.menu li a.is-active, .primary_menu nav ul.menu li a:hover {
+  background-color: #333;
+  border-bottom: 4px solid #0797ea;
+}
+
+/*# sourceMappingURL=header.css.map */
