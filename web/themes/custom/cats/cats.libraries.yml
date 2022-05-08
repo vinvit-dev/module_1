@@ -6,3 +6,4 @@ framework:
       css/header.css: {}
       css/footer.css: {}
       css/content.css: {}
+      css/form.css: {}
