@@ -13,7 +13,8 @@ function vinvit_theme(): array
   $themes['cats'] = [
     "variables" => [
       'add_form' => NULL,
-      "markup" => NULL,
+      'markup' => NULL,
+      'cats' => NUll,
     ]
   ];
   return $themes;

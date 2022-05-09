@@ -3,3 +3,16 @@
 <section class="add_cats_form">
   {{ add_form }}
 </section>
+
+
+<section class="cat-list">
+  <h2 cat-list_title>Cats list</h2>
+  {% for cat in cats %}
+    <div class="cat">
+      <img src="{{ cat.cat_image }}" alt="{{ cat.cat_name }}-image" width="300px" class="cat_image">
+      <div class="cat_name">{{ cat.cat_name }}</div>
+      <div class="email">{{ cat.email }}</div>
+      <div class="date">{{ cat.date }}</div>
+    </div>
+  {% endfor %}
+</section>
