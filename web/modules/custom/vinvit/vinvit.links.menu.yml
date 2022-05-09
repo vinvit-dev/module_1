@@ -1,0 +1,6 @@
+pets.cats_list:
+  title: "Cats list"
+  description: "Cats list"
+  route_name: vinvit.cats_list
+  parent: system.admin_structure
+

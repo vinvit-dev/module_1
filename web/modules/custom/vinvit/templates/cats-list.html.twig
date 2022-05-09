@@ -1,0 +1,47 @@
+<p class="page-description">{{ markup }}</p>
+
+<sections class="actions-btn">
+  <a class="use-ajax deleteall" data-dialog-type="modal" href="/vinvit/cats/delete-all"  style="float: right">Delete all</a>
+  <a class="use-ajax deleteall" data-dialog-type="modal" href="/vinvit/cats/delete-multiply/{{ cat.id }}"  style="float: right; padding-right: 15px">Delete selected</a>
+</sections>
+
+<section class="cats-list-admin">
+  <table class="cats-list-table">
+    <tr>
+      <th>Check</th>
+      <th>Cat image</th>
+      <th>Cat name</th>
+      <th>Email</th>
+      <th>Pub. date</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {% for cat in cats %}
+      <tr>
+        <td>
+          <input type="checkbox" name="cat-selected" data-id="{{ cat.id }}" class="cat-checkbox">
+        </td>
+        <td>
+          <a class="cat-image-link" target="_blank" href="{{ cat.cat_image }}">
+            <img src="{{ cat.cat_image }}" alt="cat image" class="cat-image" width="100px">
+          </a>
+        </td>
+        <td>
+          <p class="cat-name" >{{ cat.cat_name }}</p>
+        </td>
+        <td>
+          <p class="cat-email">{{ cat.email }}</p>
+        </td>
+        <td>
+          <p class="cat-pubdate">{{ cat.date }}</p>
+        </td>
+        <td>
+          <a class="use-ajax edit" data-dialog-type="modal" href="/vinvit/cats/edit/{{ cat.id }}">Edit</a>
+        </td>
+        <td>
+          <a class="use-ajax delete" data-dialog-type="modal" href="/vinvit/cats/delete/{{ cat.id }}">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</section>

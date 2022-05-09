@@ -41,10 +41,9 @@ class CatsPageController extends ControllerBase {
     $response = new AjaxResponse();
 
     $delete_form = \Drupal::formBuilder()->getForm('Drupal\vinvit\Form\DeleteForm', $id);
-    $response->addCommand(new OpenModalDialogCommand('', $delete_form,
+    $response->addCommand(new OpenModalDialogCommand('Delete', $delete_form,
       [
-        'width' => 350,
-        'height' => 80,
+        'width' => 350
       ]
     ));
 
@@ -63,7 +62,7 @@ class CatsPageController extends ControllerBase {
     $results = $conn->execute()->fetchAssoc();
 
     $edit_form = \Drupal::formBuilder()->getForm('Drupal\vinvit\Form\CatsForm', $results);
-    $response->addCommand(new OpenModalDialogCommand('', $edit_form, ['width' => 500]));
+    $response->addCommand(new OpenModalDialogCommand('Edit', $edit_form, ['width' => 500]));
 
     return $response;
   }

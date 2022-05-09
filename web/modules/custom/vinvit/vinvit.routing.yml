@@ -21,3 +21,12 @@ vinvit.edit:
   requirements:
     _permission: 'access to edit cats list'
 
+vinvit.cats_list:
+  path: '/admin/structure/catlist'
+  defaults:
+    _controller: '\Drupal\vinvit\Controller\CatsListController::content'
+    _title: 'Cats List'
+  requirements:
+    _permission: 'access view cats list'
+
+

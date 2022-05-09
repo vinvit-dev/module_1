@@ -17,6 +17,12 @@ function vinvit_theme(): array
       'cats' => NUll,
     ]
   ];
+  $themes['cats-list'] = [
+    "variables" => [
+      'markup' => NULL,
+      'cats' => NUll,
+    ]
+  ];
   return $themes;
 }
 
