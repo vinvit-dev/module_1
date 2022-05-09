@@ -4,15 +4,18 @@
   {{ add_form }}
 </section>
 
-
+<h2 class="cat-list_title">Cats list</h2>
 <section class="cat-list">
-  <h2 cat-list_title>Cats list</h2>
   {% for cat in cats %}
     <div class="cat">
-      <img src="{{ cat.cat_image }}" alt="{{ cat.cat_name }}-image" width="300px" class="cat_image">
-      <div class="cat_name">{{ cat.cat_name }}</div>
-      <div class="email">{{ cat.email }}</div>
-      <div class="date">{{ cat.date }}</div>
+      <a href="{{ cat.cat_image }}" class="cat-img-link">
+        <img src="{{ cat.cat_image }}" alt="{{ cat.cat_name }}-image" width="300px" class="cat_image">
+      </a>
+      <div class="sec-col">
+        <div class="cat-name">{{ cat.cat_name }}</div>
+        <div class="cat-email">{{ cat.email }}</div>
+        <div class="cat-date">{{ cat.date }}</div>
+      </div>
     </div>
   {% endfor %}
 </section>
