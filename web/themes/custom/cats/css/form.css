@@ -1,12 +1,16 @@
 form, .form {
   background-color: #fff;
-  box-shadow: 0px 7px 11px -5px rgba(51, 51, 51, 0.6);
+  box-shadow: 0 7px 11px -5px rgba(51, 51, 51, 0.6);
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 700px;
   margin: 0 auto;
+}
+form .description, .form .description {
+  color: #999;
+  margin-bottom: 10px;
 }
 form .form-item, form .form-actions, .form .form-item, .form .form-actions {
   margin: 0;
@@ -32,12 +36,30 @@ form input[type=submit], .form input[type=submit] {
   color: #202124;
   background-color: #fff;
   border: 1px solid #999;
-  margin: 10px 0 0;
 }
 form input[type=submit]:hover, .form input[type=submit]:hover {
   background: #0797ea;
   color: white;
   border: 1px solid #0797ea;
+}
+form input[type=file], .form input[type=file] {
+  border: none;
+}
+form input[name=cat_image_remove_button], .form input[name=cat_image_remove_button] {
+  margin-top: 0;
+}
+form input[name=cat_image_remove_button]:hover, .form input[name=cat_image_remove_button]:hover {
+  background: indianred;
+  color: white;
+  border: 1px solid indianred;
+}
+form .form-managed-file, .form .form-managed-file {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+form .form-submit, .form .form-submit {
+  margin-top: 15px;
 }
 
 /*# sourceMappingURL=form.css.map */

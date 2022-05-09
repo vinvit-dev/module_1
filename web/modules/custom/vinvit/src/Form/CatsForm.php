@@ -59,9 +59,8 @@ class CatsForm extends FormBase
       '#type' => 'managed_file',
       '#title' => $this->t('Your cat’s image:'),
       '#required' => true,
-      '#attributes' => [
-        'title' => $this->t('Valid extensions: jpeg, jpg, png. Max file size 2MB'),
-      ],
+      '#description' => $this->t('Valid extensions: jpeg, jpg, png. Max file size 2MB'),
+      '#multiple' => FALSE,
       '#upload_location' => 'public://vinvit/cats',
       '#upload_validators' => [
         'file_validate_extensions' => ['jpeg jpg png'],
