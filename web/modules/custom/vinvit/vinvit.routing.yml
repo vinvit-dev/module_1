@@ -5,3 +5,11 @@ vinvit.main:
     _title: 'Cats'
   requirements:
     _permission: 'access content'
+
+
+vinvit.delete:
+  path: '/vinvit/cats/delete/{id}'
+  defaults:
+    _controller: '\Drupal\vinvit\Controller\CatsPageController::delete'
+  requirements:
+    _permission: 'access to edit cats list'

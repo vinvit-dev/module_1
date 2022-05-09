@@ -4,6 +4,9 @@ namespace Drupal\vinvit\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\OpenModalDialogCommand;
+
 /**
  * Cats page controller class.
  */
@@ -29,6 +32,18 @@ class CatsPageController extends ControllerBase {
       '#cats' => $results,
       '#markup' => 'Hello! You can add here a photo of your cat.',
     ];
+  }
+
+  /**
+   * Return modal window with delete form.
+   */
+  public function delete($id): AjaxResponse {
+    $response = new AjaxResponse();
+
+    $delete_form = \Drupal::formBuilder()->getForm('Drupal\vinvit\Form\DeleteForm', $id);
+    $response->addCommand(new OpenModalDialogCommand('Delete', $delete_form, ['width' => 600]));
+
+    return $response;
   }
 
 }

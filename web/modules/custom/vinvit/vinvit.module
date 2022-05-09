@@ -19,3 +19,10 @@ function vinvit_theme(): array
   ];
   return $themes;
 }
+
+ /**
+ * Implements hook_page_attachments().
+ */
+function vinvit_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'vinvit/vinvit';
+}
