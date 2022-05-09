@@ -7,8 +7,7 @@ use Drupal\Core\Controller\ControllerBase;
 /**
  * Cats page controller class.
  */
-class CatsPageController extends ControllerBase
-{
+class CatsPageController extends ControllerBase {
 
   /**
    * Returns a page.
@@ -16,8 +15,7 @@ class CatsPageController extends ControllerBase
    * @return array
    *   A renderer array.
    */
-  public function content(): array
-  {
+  public function content(): array {
     $add_form = \Drupal::formBuilder()->getForm('Drupal\vinvit\Form\CatsForm');
     return [
       '#theme' => 'cats',
@@ -25,4 +23,5 @@ class CatsPageController extends ControllerBase
       '#markup' => 'Hello! You can add here a photo of your cat.',
     ];
   }
+
 }
