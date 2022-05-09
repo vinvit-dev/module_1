@@ -38,21 +38,35 @@ class CatsForm extends FormBase
       '#title' => $this->t('Your cat’s name:'),
       '#required' => true,
       '#maxlength' => 32,
-      '#atribute' => [
-        'title' => 'Minimal length is 2 and maximum length is 32 characters'
+      '#attributes' => [
+        'title' => $this->t('Minimal length is 2 and maximum length is 32 characters')
       ],
     ];
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Your email:'),
       '#required' => true,
-      '#atribute' => [
-        'title' => 'The email can only contain Latin letters, an underscore, or a hyphen.'
+      '#attributes' => [
+        'title' => $this->t('The email can only contain Latin letters, an underscore, or a hyphen.')
       ],
       '#ajax' => [
         'event' => 'change',
         'callback' => '::emailAjax'
       ]
+    ];
+
+    $form['cat_image'] = [
+      '#type' => 'managed_file',
+      '#title' => $this->t('Your cat’s image:'),
+      '#required' => true,
+      '#attributes' => [
+        'title' => $this->t('Valid extensions: jpeg, jpg, png. Max file size 2MB'),
+      ],
+      '#upload_location' => 'public://vinvit/cats',
+      '#upload_validators' => [
+        'file_validate_extensions' => ['jpeg jpg png'],
+        'file_validate_size' => [2100000]
+      ],
     ];
 
     $form['actions']['submit'] = [
@@ -69,18 +83,16 @@ class CatsForm extends FormBase
   /**
    * Ajax callback function for email
    *
+   * @param array $form
    * @param FormStateInterface $form_state
    * @return AjaxResponse
    */
-  public function emailAjax(FormStateInterface $form_state): AjaxResponse
+  public function emailAjax(array &$form, FormStateInterface $form_state): AjaxResponse
   {
     $response = new AjaxResponse();
 
     if (!filter_var($form_state->getValue('email'), FILTER_VALIDATE_EMAIL)) {
       $response->addCommand(new MessageCommand($this->t('Invalid email'), null, ["type" => "error"]));
-      $response->addCommand(new CssCommand('#edit-email', ['border' => '2px solid red']));
-    } elseif (preg_match('/[^-_@.A-Za-z]/', $form_state->getValue('email'))) {
-      $response->addCommand(new MessageCommand($this->t('The email can only contain Latin letters, an underscore, or a hyphen.'), null, ["type" => "error"]));
       $response->addCommand(new CssCommand('#edit-email', ['border' => '2px solid red']));
     } else {
       $response->addCommand(new MessageCommand(null));
@@ -93,16 +105,21 @@ class CatsForm extends FormBase
   /**
    * Ajax callback function for submit
    *
+   * @param array $form
    * @param FormStateInterface $form_state
    * @return AjaxResponse
    */
-  public function ajaxSubmit(FormStateInterface $form_state): AjaxResponse
+  public function ajaxSubmit(array &$form, FormStateInterface $form_state): AjaxResponse
   {
     $response = new AjaxResponse();
 
     if (strlen($form_state->getValue('cat_name')) < 2 || strlen($form_state->getValue('cat_name')) > 32) {
       $response->addCommand(new MessageCommand($this->t('Invalid name length'), null, ["type" => "error"]));
+    } elseif (preg_match('/[^-_@.A-Za-z]/', $form_state->getValue('email'))) {
+      $response->addCommand(new MessageCommand($this->t('The email can only contain Latin letters, an underscore, or a hyphen.'), null, ["type" => "error"]));
+      $response->addCommand(new CssCommand('#edit-email', ['border' => '2px solid red']));
     } else {
+      $response->addCommand(new CssCommand('#edit-email', ['border' => '1px solid black']));
       $response->addCommand(new MessageCommand($this->t('All good')));
     }
     return $response;
