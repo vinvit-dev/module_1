@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 0 50%;
+  justify-content: space-between;
 }
 .cat-list .cat .cat-name {
   font-size: 19px;
@@ -64,6 +65,31 @@
   object-fit: cover;
   width: 220px;
   height: 220px;
+}
+.cat-list .cat .cat-actions {
+  align-self: flex-end;
+}
+.cat-list .cat .cat-actions .delete {
+  color: #202124;
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 5px;
+}
+.cat-list .cat .cat-actions .delete:hover {
+  background: indianred;
+  color: white;
+  border: 1px solid indianred;
+}
+.cat-list .cat .cat-actions .edit {
+  color: #202124;
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 5px;
+}
+.cat-list .cat .cat-actions .edit:hover {
+  background: darkseagreen;
+  color: white;
+  border: 1px solid darkseagreen;
 }
 
 @media (max-width: 894px) {

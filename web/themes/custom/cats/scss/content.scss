@@ -43,6 +43,7 @@
       display: flex;
       flex-direction: column;
       flex: 1 0 50%;
+      justify-content: space-between;
     }
     .cat-name {
       font-size: 19px;
@@ -67,6 +68,31 @@
         object-fit: cover;
         width: 220px;
         height: 220px;
+      }
+    }
+    .cat-actions {
+      align-self: flex-end;
+      .delete {
+        color: $black;
+        background-color: $white;
+        border: 1px solid #999;
+        padding: 5px;
+        &:hover {
+          background: indianred;
+          color: white;
+          border: 1px solid indianred
+        }
+      }
+      .edit {
+        color: $black;
+        background-color: $white;
+        border: 1px solid #999;
+        padding: 5px;
+        &:hover {
+          background: darkseagreen;
+          color: white;
+          border: 1px solid darkseagreen;
+        }
       }
     }
   }

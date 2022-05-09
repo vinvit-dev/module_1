@@ -63,3 +63,28 @@ form, .form {
   }
 }
 
+
+.ui-dialog {
+  form {
+    box-shadow: none;
+    &.cats-del-form {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 0;
+      input {
+        margin: 0;
+        &:hover {
+          background: indianred;
+          color: white;
+          border: 1px solid indianred
+        }
+      }
+    }
+  }
+  .ui-dialog-titlebar {
+    border:none;
+    background: $white;
+    padding: 0;
+
+  }
+}

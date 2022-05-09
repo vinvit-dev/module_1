@@ -62,4 +62,26 @@ form .form-submit, .form .form-submit {
   margin-top: 15px;
 }
 
+.ui-dialog form {
+  box-shadow: none;
+}
+.ui-dialog form.cats-del-form {
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0;
+}
+.ui-dialog form.cats-del-form input {
+  margin: 0;
+}
+.ui-dialog form.cats-del-form input:hover {
+  background: indianred;
+  color: white;
+  border: 1px solid indianred;
+}
+.ui-dialog .ui-dialog-titlebar {
+  border: none;
+  background: #fff;
+  padding: 0;
+}
+
 /*# sourceMappingURL=form.css.map */

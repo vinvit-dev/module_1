@@ -12,13 +12,15 @@
         <img src="{{ cat.cat_image }}" alt="{{ cat.cat_name }}-image" width="300px" class="cat_image">
       </a>
       <div class="sec-col">
-        <div class="cat-name">{{ cat.cat_name }}</div>
-        <div class="cat-email">{{ cat.email }}</div>
-        <div class="cat-date">{{ cat.date }}</div>
+        <div class="cat-data">
+          <div class="cat-name">{{ cat.cat_name }}</div>
+          <div class="cat-email">{{ cat.email }}</div>
+          <div class="cat-date">{{ cat.date }}</div>
+        </div>
         {% if user.hasPermission('access to edit cats list') %}
-          <div class="cat_actions">
-            <a class="use-ajax" data-dialog-type="modal" href="/vinvit/cats/delete/{{ cat.id }}">Edit</a>
-            <a class="use-ajax" data-dialog-type="modal" href="/vinvit/cats/delete/{{ cat.id }}">Delete</a>
+          <div class="cat-actions">
+            <a class="use-ajax edit" data-dialog-type="modal" href="/vinvit/cats/edit/{{ cat.id }}">Edit</a>
+            <a class="use-ajax delete" data-dialog-type="modal" href="/vinvit/cats/delete/{{ cat.id }}">Delete</a>
           </div>
         {% endif %}
       </div>
