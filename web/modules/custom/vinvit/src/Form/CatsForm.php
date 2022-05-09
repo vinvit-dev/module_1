@@ -30,7 +30,7 @@ class CatsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state): array {
+  public function buildForm(array $form, FormStateInterface $form_state, $edit = NULL): array {
     $form['cat_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your cat’s name:'),
@@ -39,6 +39,7 @@ class CatsForm extends FormBase {
       '#attributes' => [
         'title' => $this->t('Minimal length is 2 and maximum length is 32 characters'),
       ],
+      '#default_value' => (isset($edit['cat_name'])) ? $edit['cat_name'] : '',
     ];
     $form['email'] = [
       '#type' => 'email',
@@ -47,6 +48,7 @@ class CatsForm extends FormBase {
       '#attributes' => [
         'title' => $this->t('The email can only contain Latin letters, an underscore, or a hyphen.'),
       ],
+      '#default_value' => (isset($edit['email'])) ? $edit['email'] : '',
       '#ajax' => [
         'event' => 'change',
         'callback' => '::emailAjax',
@@ -68,10 +70,10 @@ class CatsForm extends FormBase {
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Add cat'),
       '#ajax' => [
         'callback' => '::ajaxSubmit',
       ],
+      '#value' => (isset($edit['id'])) ? $this->t('Edit') : $this->t('Add cat'),
     ];
     return $form;
   }
