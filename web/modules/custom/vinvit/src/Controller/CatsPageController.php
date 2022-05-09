@@ -58,7 +58,7 @@ class CatsPageController extends ControllerBase {
     $response = new AjaxResponse();
 
     $conn = \Drupal::database()->select('vinvit', 'v');
-    $conn->fields('v', ['id', 'cat_name', 'email', 'cat_image']);
+    $conn->fields('v', ['id', 'cat_name', 'email']);
     $conn->condition('id', $id);
     $results = $conn->execute()->fetchAssoc();
 

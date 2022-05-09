@@ -8,11 +8,13 @@ namespace Drupal\vinvit\Form;
  */
 
 use Drupal\Core\Ajax\CssCommand;
+use Drupal\Core\Ajax\RedirectCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 
 /**
@@ -66,6 +68,10 @@ class CatsForm extends FormBase {
         'file_validate_extensions' => ['jpeg jpg png'],
         'file_validate_size' => [2100000],
       ],
+    ];
+    $form['id'] = [
+      '#type' => 'hidden',
+      '#value' => $edit['id'],
     ];
 
     $form['actions']['submit'] = [
@@ -127,6 +133,28 @@ class CatsForm extends FormBase {
     elseif (preg_match('/[^-_@.A-Za-z]/', $form_state->getValue('email'))) {
       $response->addCommand(new MessageCommand($this->t('The email can only contain Latin letters, an underscore, or a hyphen.'), NULL, ["type" => "error"]));
       $response->addCommand(new CssCommand('#edit-email', ['border' => '2px solid red']));
+    }
+    elseif ($form_state->getValue('id') != NULL) {
+      $fields['cat_name'] = $form_state->getValue('cat_name');
+      $fields['email'] = $form_state->getValue('email');
+
+      if ($form_state->getValue('cat_image') != NULL) {
+        $fid = $form_state->getValue('cat_image');
+        $file = File::load($fid[0]);
+        $file->setPermanent();
+        $file->save();
+        $path = $file->getFileUri();
+        $fields['cat_image'] = file_create_url($path);
+      }
+
+      $connection = \Drupal::database()->update('vinvit');
+      $connection->condition('id', $form_state->getValue('id'));
+      $connection->fields($fields);
+      $connection->execute();
+
+      $url = Url::fromRoute("vinvit.main");
+      $response->addCommand(new RedirectCommand($url->toString()));
+      $response->addCommand(new MessageCommand($this->t('Update successful')));
     }
     else {
 
