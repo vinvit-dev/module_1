@@ -4,7 +4,9 @@
   {{ add_form }}
 </section>
 
-<h2 class="cat-list_title">Cats list</h2>
+{% if cats %}
+  <h2 class="cat-list_title">Cats list</h2>
+{% endif %}
 <section class="cat-list">
   {% for cat in cats %}
     <div class="cat">

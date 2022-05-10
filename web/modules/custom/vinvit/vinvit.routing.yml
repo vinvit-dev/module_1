@@ -27,6 +27,12 @@ vinvit.cats_list:
     _controller: '\Drupal\vinvit\Controller\CatsListController::content'
     _title: 'Cats List'
   requirements:
-    _permission: 'access view cats list'
+    _permission: 'access to edit cats list'
 
+vinvit.delete_all:
+  path: '/admin/structure/catlist/detele-all'
+  defaults:
+    _controller: '\Drupal\vinvit\Controller\CatsListController::deleteAll'
+  requirements:
+    _permission: 'access to edit cats list'
 

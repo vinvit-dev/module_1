@@ -1,8 +1,8 @@
 <p class="page-description">{{ markup }}</p>
 
 <sections class="actions-btn">
-  <a class="use-ajax deleteall" data-dialog-type="modal" href="/vinvit/cats/delete-all"  style="float: right">Delete all</a>
-  <a class="use-ajax deleteall" data-dialog-type="modal" href="/vinvit/cats/delete-multiply/{{ cat.id }}"  style="float: right; padding-right: 15px">Delete selected</a>
+  <a class="use-ajax deleteall" data-dialog-type="modal" href="/admin/structure/catlist/detele-all"  style="float: right">Delete all</a>
+  <a class="use-ajax delete-selected" data-dialog-type="modal" href="/admin/structure/catlist/delete-multiply/{{ cat.id }}"  style="float: right; padding-right: 15px">Delete selected</a>
 </sections>
 
 <section class="cats-list-admin">
@@ -19,7 +19,9 @@
     {% for cat in cats %}
       <tr>
         <td>
-          <input type="checkbox" name="cat-selected" data-id="{{ cat.id }}" class="cat-checkbox">
+          <label>
+            <input type="checkbox" name="cat-selected" data-id="{{ cat.id }}" class="cat-checkbox">
+          </label>
         </td>
         <td>
           <a class="cat-image-link" target="_blank" href="{{ cat.cat_image }}">

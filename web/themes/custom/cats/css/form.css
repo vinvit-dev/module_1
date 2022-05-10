@@ -81,7 +81,7 @@ form .form-submit, .form .form-submit {
 .ui-dialog .ui-dialog-titlebar {
   border: none;
   background: #fff;
-  padding: 0;
+  padding: 5px 10px;
 }
 
 /*# sourceMappingURL=form.css.map */

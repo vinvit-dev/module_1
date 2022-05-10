@@ -51,12 +51,18 @@ class DeleteForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $id = $form_state->getValue('id');
+    if ($id != NULL) {
+      $conn = \Drupal::database()->delete('vinvit');
+      $conn->condition('id', $id);
+      $conn->execute();
+      $form_state->setRedirect('vinvit.main');
+    }
+    else {
+      \Drupal::database()->delete('vinvit')->execute();
+      $form_state->setRedirect('vinvit.cats_list');
+    }
 
-    $conn = \Drupal::database()->delete('vinvit');
-    $conn->condition('id', $id);
-    $conn->execute();
 
-    $form_state->setRedirect('vinvit.main');
     \Drupal::messenger()->addStatus($this->t("Delete successful"));
   }
 
